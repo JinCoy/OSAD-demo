@@ -1,0 +1,473 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="OSAD 온디바이스 오디오 특징 분석 실험"
+    />
+    <title>OSAD · One Song A Day</title>
+    <script type="module" crossorigin src="/OSAD-demo/assets/index-De5L0HY9.js"></script>
+    <link rel="stylesheet" crossorigin href="/OSAD-demo/assets/index-Bfvv5Qcm.css">
+  </head>
+  <body data-page="play">
+    <main class="app-shell">
+      <header class="app-header">
+        <a class="brand" href="#play" aria-label="OSAD Play 홈">
+          <span class="brand-mark" aria-hidden="true"></span>
+          <span>
+            <strong>OSAD</strong>
+            <small>ONE SONG A DAY</small>
+          </span>
+        </a>
+
+        <nav class="page-nav" aria-label="주요 화면">
+          <button class="page-nav-button is-active" data-page-target="play" type="button" aria-selected="true">
+            <span>Play</span>
+            <small>음악 들려주기</small>
+          </button>
+          <button class="page-nav-button" data-page-target="lab" type="button" aria-selected="false">
+            <span>Lab</span>
+            <small>분석값 검증</small>
+          </button>
+        </nav>
+
+        <div class="privacy-badge" title="오디오는 서버로 전송되지 않습니다.">
+          <span class="privacy-dot"></span>
+          Local only
+        </div>
+      </header>
+
+      <header class="page-intro play-only" data-page-section="play">
+        <p class="eyebrow">PLAY · DAILY MUSIC RITUAL</p>
+        <h1>오늘의 음악을<br />들려주세요.</h1>
+        <p class="subtitle">
+          원하는 30–60초 구간을 분석해 한 곡의 Music DNA를 만듭니다.
+          결과는 먼저 진화 모습으로 미리 보고, 확정할 때만 현재 세션의 아바타에 반영합니다.
+        </p>
+      </header>
+
+      <header class="page-intro lab-intro lab-only" data-page-section="lab">
+        <p class="eyebrow">LAB · ANALYSIS & RESPONSE</p>
+        <h1>분석값을<br />검증하세요.</h1>
+        <p class="subtitle">
+          알고리즘 보정, 실시간 특징값과 시각 반응을 분리해서 확인하는 개발자용 화면입니다.
+        </p>
+      </header>
+
+      <section class="workspace" aria-label="오디오 분석 작업 영역">
+        <article class="panel input-panel play-only" data-page-section="play">
+          <div class="panel-heading">
+            <div>
+              <p class="step">01 · CHOOSE A SOUND</p>
+              <h2>소리를 연결하세요</h2>
+            </div>
+            <p id="status" class="status" data-tone="idle">대기 중</p>
+          </div>
+
+          <div class="source-grid">
+            <button id="microphone-button" class="source-button" type="button">
+              <span class="source-icon" aria-hidden="true">◉</span>
+              <span>
+                <strong>마이크 듣기</strong>
+                <small>주변 음악, 대화, 자연음</small>
+              </span>
+            </button>
+
+            <label class="source-button file-button" for="audio-file">
+              <span class="source-icon" aria-hidden="true">↗</span>
+              <span>
+                <strong>파일 선택</strong>
+                <small id="file-name">기기 안에서만 재생</small>
+              </span>
+              <input id="audio-file" type="file" accept="audio/*" />
+            </label>
+          </div>
+
+          <audio id="audio-player" controls hidden></audio>
+
+          <button id="stop-button" class="text-button" type="button" disabled>
+            입력 중지 및 초기화
+          </button>
+        </article>
+
+        <article class="panel avatar-panel">
+          <div class="panel-heading compact">
+            <div>
+              <p class="step">CURRENT AVATAR</p>
+              <h2>오늘의 아바타</h2>
+            </div>
+            <p class="live-label"><span></span> LIVE</p>
+          </div>
+
+          <div id="avatar-stage" class="avatar-stage" aria-label="오디오에 반응하는 임시 아바타">
+            <div class="avatar-aura aura-outer"></div>
+            <div class="avatar-aura aura-inner"></div>
+
+            <div class="evolution-object-layer affinity-objects" aria-hidden="true">
+              <span></span><span></span><span></span><span></span><span></span>
+            </div>
+            <div class="evolution-object-layer specialization-objects" aria-hidden="true">
+              <span></span><span></span><span></span><span></span>
+            </div>
+            <div class="evolution-object-layer mastery-objects" aria-hidden="true">
+              <span></span><span></span><span></span><span></span><span></span>
+            </div>
+            <div class="evolution-burst" aria-hidden="true">
+              <span style="--burst-angle:-75deg"></span>
+              <span style="--burst-angle:-48deg"></span>
+              <span style="--burst-angle:-22deg"></span>
+              <span style="--burst-angle:8deg"></span>
+              <span style="--burst-angle:36deg"></span>
+              <span style="--burst-angle:64deg"></span>
+              <span style="--burst-angle:104deg"></span>
+              <span style="--burst-angle:142deg"></span>
+            </div>
+            <div id="evolution-unlock-label" class="evolution-unlock-label" aria-live="polite"></div>
+            <div class="avatar-shadow"></div>
+
+            <div class="avatar-creature">
+              <div class="avatar-tail" aria-hidden="true">
+                <span></span><span></span><span></span>
+              </div>
+
+              <div class="energy-crest" aria-hidden="true">
+                <span></span><span></span><span></span><span></span><span></span>
+              </div>
+
+              <div class="avatar-ear ear-left" aria-hidden="true"><span></span></div>
+              <div class="avatar-ear ear-right" aria-hidden="true"><span></span></div>
+
+              <div class="avatar-core">
+                <div class="body-highlight"></div>
+                <div class="body-pattern" aria-hidden="true">
+                  <span class="pattern-one"></span>
+                  <span class="pattern-two"></span>
+                  <span class="pattern-three"></span>
+                </div>
+                <span class="eye eye-left"></span>
+                <span class="eye eye-right"></span>
+                <span class="mouth"></span>
+              </div>
+            </div>
+          </div>
+
+          <div class="avatar-state-card">
+            <div>
+              <span>Stage</span>
+              <strong id="avatar-evolution-stage">Base</strong>
+            </div>
+            <span id="avatar-evolution-progress">0 / 1 XP</span>
+          </div>
+          <p class="avatar-note">음악이 재생되는 동안 반응하지만, 확정 전에는 외형에 저장되지 않습니다.</p>
+          <div class="trait-legend" aria-label="Music DNA 신체 변화 연결">
+            <span>Loudness · 오라</span>
+            <span>Energy · 돌기</span>
+            <span>Bass · 몸통/꼬리</span>
+            <span>Brightness · 귀/색</span>
+            <span>Pulse · 무늬/점프</span>
+          </div>
+        </article>
+      </section>
+
+      <section class="panel song-analysis-panel play-only" data-page-section="play" aria-labelledby="song-analysis-heading">
+        <div class="panel-heading">
+          <div>
+            <p class="step">02 · ANALYZE ONE SONG</p>
+            <h2 id="song-analysis-heading">곡을 대표하는 Music DNA 만들기</h2>
+          </div>
+          <div class="duration-control">
+            <label for="analysis-duration">분석 시간</label>
+            <select id="analysis-duration">
+              <option value="30">30초</option>
+              <option value="45" selected>45초</option>
+              <option value="60">60초</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="analysis-session">
+          <div class="analysis-copy">
+            <strong id="analysis-status">오디오 입력을 연결해주세요</strong>
+            <span id="analysis-detail">실시간 반응과 별도로 100ms 간격의 특징값만 수집합니다.</span>
+          </div>
+          <div class="analysis-actions">
+            <button id="start-analysis" class="primary-button" type="button" disabled>45초 분석 시작</button>
+            <button id="cancel-analysis" class="secondary-button" type="button" disabled>취소</button>
+          </div>
+        </div>
+
+        <div class="analysis-progress" aria-label="곡 분석 진행률">
+          <span id="analysis-progress-bar"></span>
+        </div>
+        <div class="analysis-progress-meta">
+          <span id="analysis-time">00:00 / 00:45</span>
+          <span id="analysis-frame-count">0 samples</span>
+        </div>
+
+        <div id="song-result" class="song-result" hidden>
+          <div class="result-heading">
+            <div>
+              <p class="step">SONG DNA SNAPSHOT</p>
+              <h3>분석 결과</h3>
+            </div>
+            <div class="result-actions">
+              <span id="result-summary">45초 · 0 samples</span>
+              <button id="preview-song-dna" class="secondary-button" type="button">진화 미리보기 만들기</button>
+            </div>
+          </div>
+          <div id="song-dna-result" class="song-dna-result"></div>
+          <p class="result-note">이 결과는 실시간 반응값과 분리된 곡 단위 스냅샷이며 아직 Avatar DNA에 저장되지 않습니다.</p>
+        </div>
+      </section>
+
+      <section id="evolution-panel" class="panel evolution-panel play-only" data-page-section="play" aria-labelledby="evolution-heading">
+        <div class="panel-heading evolution-heading">
+          <div>
+            <p class="step">03 · EVOLUTION PREVIEW</p>
+            <h2 id="evolution-heading">이 음악이 남길 변화를 확인하세요</h2>
+          </div>
+          <span id="evolution-stage-label" class="evolution-mode-badge">Base · DEV</span>
+        </div>
+
+        <div class="evolution-progress-copy">
+          <span id="evolution-progress-label">1차 진화까지 0.0/1 XP</span>
+          <small>개발 모드 · 1 / 3 / 6 XP</small>
+        </div>
+        <div class="evolution-progress"><span id="evolution-progress-bar"></span></div>
+
+        <div id="evolution-empty" class="evolution-empty">
+          <strong>아직 미리볼 Music DNA가 없습니다.</strong>
+          <p>30–60초 분석을 완료하고 위의 ‘진화 미리보기 만들기’를 눌러주세요.</p>
+        </div>
+
+        <div id="evolution-preview-content" class="evolution-preview-content" hidden>
+          <div class="evolution-comparison" aria-label="진화 전후 비교">
+            <article>
+              <span>현재 모습</span>
+              <strong id="evolution-before-label">Base</strong>
+            </article>
+            <span class="evolution-arrow" aria-hidden="true">→</span>
+            <article class="is-next">
+              <span>예상 모습</span>
+              <strong id="evolution-after-label">1차 진화</strong>
+            </article>
+          </div>
+
+          <p id="evolution-reason" class="evolution-reason"></p>
+          <div id="evolution-candidates" class="evolution-candidates"></div>
+
+          <div class="evolution-actions">
+            <button id="discard-evolution" class="secondary-button" type="button">보류</button>
+            <button id="confirm-evolution" class="primary-button" type="button">진화 확정하기</button>
+          </div>
+        </div>
+
+        <p id="evolution-message" class="evolution-message" aria-live="polite">곡 분석 후 ‘진화 미리보기 만들기’를 눌러주세요.</p>
+        <p class="evolution-session-note">확정된 기록만 이 브라우저에 저장됩니다. 원본 오디오는 저장하지 않습니다.</p>
+      </section>
+
+      <section class="panel calibration-panel lab-only" data-page-section="lab" aria-labelledby="calibration-heading">
+        <div class="panel-heading">
+          <div>
+            <p class="step">01 · ANALYSIS CALIBRATION</p>
+            <h2 id="calibration-heading">분석 알고리즘의 기준값을 비교하세요</h2>
+          </div>
+          <div class="calibration-heading-actions">
+            <label for="calibration-profile">Profile</label>
+            <select id="calibration-profile">
+              <option value="file">File v0</option>
+              <option value="microphone">Microphone v0</option>
+            </select>
+            <button id="reset-calibration" class="secondary-button" type="button">기본값</button>
+          </div>
+        </div>
+
+        <p class="calibration-intro">
+          개발 검증용 설정입니다. Raw는 현재 측정값, Calibrated는 noise gate·범위·curve를 적용해
+          Song DNA에 들어가는 값입니다. 아래 설정은 Avatar Mutation Lab의 표시 민감도와 독립적입니다.
+        </p>
+
+        <div id="calibration-live" class="calibration-live" aria-label="원시값과 보정값 비교"></div>
+
+        <div class="calibration-settings">
+          <div class="calibration-core">
+            <label>
+              <span>Noise gate <output id="noise-gate-output">0.00</output></span>
+              <input id="noise-gate" type="range" min="0" max="0.3" step="0.01" value="0" />
+            </label>
+            <label>
+              <span>Energy loudness weight <output id="energy-weight-output">0.72</output></span>
+              <input id="energy-weight" type="range" min="0" max="1" step="0.01" value="0.72" />
+            </label>
+            <label>
+              <span>Sample interval</span>
+              <select id="sample-interval">
+                <option value="50">50ms</option>
+                <option value="100" selected>100ms</option>
+                <option value="200">200ms</option>
+              </select>
+            </label>
+          </div>
+
+          <details class="calibration-details" open>
+            <summary>축별 분석 범위와 Curve</summary>
+            <p>Min–Max는 분석 입력을 다시 0–1로 펼치고, Curve가 높을수록 작은 값이 강조됩니다.</p>
+            <div id="calibration-axis-controls" class="calibration-axis-controls"></div>
+          </details>
+
+          <details class="calibration-details">
+            <summary>Song DNA 집계 가중치</summary>
+            <p>분석 세션이 끝난 뒤 프레임 통계를 하나의 곡 값으로 요약하는 비율입니다.</p>
+            <div class="summary-controls">
+              <label>
+                <span>Loudness median <output data-summary-output="loudnessMedianWeight">0.55</output></span>
+                <input data-summary="loudnessMedianWeight" type="range" min="0" max="1" step="0.01" value="0.55" />
+              </label>
+              <label>
+                <span>Energy mean <output data-summary-output="energyMeanWeight">0.70</output></span>
+                <input data-summary="energyMeanWeight" type="range" min="0" max="1" step="0.01" value="0.70" />
+              </label>
+              <label>
+                <span>Pulse P90 <output data-summary-output="pulsePeakWeight">0.65</output></span>
+                <input data-summary="pulsePeakWeight" type="range" min="0" max="1" step="0.01" value="0.65" />
+              </label>
+              <label>
+                <span>Active threshold <output data-summary-output="activeThreshold">0.15</output></span>
+                <input data-summary="activeThreshold" type="range" min="0" max="0.5" step="0.01" value="0.15" />
+              </label>
+            </div>
+          </details>
+        </div>
+
+        <div class="calibration-runs">
+          <div class="calibration-runs-heading">
+            <div>
+              <strong>Session comparison</strong>
+              <span>완료된 분석을 최대 6개까지 현재 탭에서 비교합니다.</span>
+            </div>
+            <button id="export-analysis" class="secondary-button" type="button" disabled>결과 JSON 내보내기</button>
+          </div>
+          <div id="calibration-run-list" class="calibration-run-list">
+            <p class="empty-runs">아직 완료된 분석이 없습니다.</p>
+          </div>
+        </div>
+      </section>
+
+      <section class="panel lab-panel lab-only" data-page-section="lab" aria-labelledby="lab-heading">
+        <div class="panel-heading">
+          <div>
+            <p class="step">02 · AVATAR RESPONSE LAB</p>
+            <h2 id="lab-heading">Music DNA를 분리해 확인하세요</h2>
+          </div>
+          <div class="mode-switch" role="group" aria-label="Music DNA 입력 모드">
+            <button class="mode-button is-active" data-mode="auto" type="button">Auto</button>
+            <button class="mode-button" data-mode="manual" type="button">Manual</button>
+          </div>
+        </div>
+
+        <div class="lab-toolbar">
+          <p id="mode-description">오디오 분석값을 민감도·범위 설정에 통과시켜 보여줍니다. Solo는 여러 개를 함께 선택할 수 있습니다.</p>
+          <div class="preset-group" role="group" aria-label="수동 값 프리셋">
+            <span>Preset</span>
+            <button data-preset="0" type="button">0</button>
+            <button data-preset="0.5" type="button">0.5</button>
+            <button data-preset="1" type="button">1</button>
+            <button id="reset-lab" class="reset-button" type="button">Reset</button>
+          </div>
+        </div>
+
+        <div id="dna-controls" class="dna-controls"></div>
+
+        <details class="tuning-panel">
+          <summary>표시 민감도와 입력 범위 조절</summary>
+          <p>
+            이 설정은 화면 반응만 조절하며 Song Analysis 결과에는 영향을 주지 않습니다.
+          </p>
+          <div id="tuning-controls" class="tuning-controls"></div>
+        </details>
+      </section>
+
+      <section class="panel metrics-panel lab-only" data-page-section="lab">
+        <div class="panel-heading">
+          <div>
+            <p class="step">03 · LIVE SIGNAL</p>
+            <h2>실시간 특징값과 신호</h2>
+          </div>
+          <p class="unit-note">모든 값은 0–1 정규화</p>
+        </div>
+
+        <div id="metrics" class="metrics-grid"></div>
+
+        <div class="charts-grid">
+          <figure>
+            <figcaption>Waveform</figcaption>
+            <canvas id="waveform" width="720" height="180"></canvas>
+          </figure>
+          <figure>
+            <figcaption>Spectrum</figcaption>
+            <canvas id="spectrum" width="720" height="180"></canvas>
+          </figure>
+        </div>
+      </section>
+
+      <section class="panel evolution-debug-panel lab-only" data-page-section="lab" aria-labelledby="evolution-debug-heading">
+        <div class="panel-heading evolution-debug-heading">
+          <div>
+            <p class="step">04 · EVOLUTION DEBUGGER</p>
+            <h2 id="evolution-debug-heading">진화 경로를 빠르게 검증하세요</h2>
+          </div>
+          <span id="evolution-debug-mode" class="debug-mode-badge" data-ready="false">MANUAL MODE REQUIRED</span>
+        </div>
+
+        <p class="evolution-debug-intro">
+          Avatar Response Lab의 Manual DNA를 테스트 곡 하나로 사용합니다. 실제 분석을 기다리지 않고
+          누적 통계, 반복 성향과 단계별 분기를 검증할 수 있습니다.
+        </p>
+
+        <div class="debug-input-row">
+          <label for="debug-song-id">
+            <span>Test song ID</span>
+            <input id="debug-song-id" type="text" value="debug-song-a" autocomplete="off" />
+          </label>
+          <div id="evolution-debug-current-dna" class="debug-current-dna" aria-label="현재 테스트 Music DNA"></div>
+        </div>
+
+        <div class="evolution-debug-actions">
+          <button id="debug-add-imprint" class="secondary-button" type="button" disabled>테스트 1곡 추가</button>
+          <button id="debug-advance-stage" class="primary-button" type="button" disabled>다음 진화까지 자동 진행</button>
+          <button id="debug-reset-evolution" class="danger-button" type="button">저장 기록 초기화</button>
+        </div>
+
+        <div id="evolution-debug-stats" class="evolution-debug-stats"></div>
+
+        <div class="evolution-debug-grid">
+          <article>
+            <div class="debug-section-heading">
+              <strong>Aggregate DNA</strong>
+              <span>Mean · Recent · Variance</span>
+            </div>
+            <div id="evolution-debug-aggregate" class="evolution-debug-aggregate"></div>
+          </article>
+          <article>
+            <div class="debug-section-heading">
+              <strong>Last branch scores</strong>
+              <span>마지막 확정 진화</span>
+            </div>
+            <div id="evolution-debug-last-decision" class="debug-last-decision"></div>
+          </article>
+        </div>
+
+        <p id="evolution-debug-message" class="evolution-debug-message" aria-live="polite">
+          Avatar Response Lab을 Manual로 전환하면 테스트 imprint를 추가할 수 있습니다.
+        </p>
+        <p class="evolution-debug-warning">개발자 초기화는 이 브라우저에 저장된 진화 기록을 삭제합니다.</p>
+      </section>
+
+      <footer>
+        <p>OSAD Technical Spike · Raw audio never leaves this browser.</p>
+      </footer>
+    </main>
+  </body>
+</html>
