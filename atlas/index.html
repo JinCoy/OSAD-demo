@@ -102,12 +102,16 @@ const LIN=["weight","motion","light","rhythm"], DIR=["drive","shine"], SIG=["non
 const LABEL={weight:"weight · 저음",motion:"motion · 에너지",light:"light · 밝기",rhythm:"rhythm · 박자",drive:"drive",shine:"shine",none:"없음",echo:"echo",harmony:"harmony",explorer:"explorer"};
 const st={lin:"weight",dir:"drive",sig:"echo"};
 const A="avatar/";
+// Sets with a body animation loop; reduced motion shows the still (?motion=full overrides).
+const ANIMATED=new Set(["final.light.drive.explorer"]);
+const MOTION=new URLSearchParams(location.search).get("motion")==="full"||!matchMedia("(prefers-reduced-motion: reduce)").matches;
 function src(stage,lin,dir,sig){
   if(stage==="egg")return A+"egg/body.webp";
   if(stage==="base")return A+"base/body.webp";
   if(stage==="s1")return A+`s1.${lin}/body.webp`;
   if(stage==="s2")return A+`s2.${lin}.${dir}/body.webp`;
-  return sig==="none"?A+`final.${lin}.${dir}/body.webp`:A+`final.${lin}.${dir}.${sig}/body.webp`;
+  const id=sig==="none"?`final.${lin}.${dir}`:`final.${lin}.${dir}.${sig}`;
+  return A+id+(ANIMATED.has(id)&&MOTION?"/anim.webp":"/body.webp");
 }
 function stage(s,cap,px){
   const size=px?` style="width:${px}px"`:"";
