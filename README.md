@@ -6,4 +6,4 @@ Public prototype preview for **OSAD — ONE SONG A DAY**.
 - Source repository: private
 - Published content: compiled static web files only
 
-Built from OSAD source commit `771d71e`.
+Built from OSAD source commit `dd30ff0`.

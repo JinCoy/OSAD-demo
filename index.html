@@ -8,8 +8,8 @@
       content="OSAD 온디바이스 오디오 특징 분석 실험"
     />
     <title>OSAD · One Song A Day</title>
-    <script type="module" crossorigin src="/OSAD-demo/assets/index-De5L0HY9.js"></script>
-    <link rel="stylesheet" crossorigin href="/OSAD-demo/assets/index-Bfvv5Qcm.css">
+    <script type="module" crossorigin src="/OSAD-demo/assets/index-B0ubQ3Fd.js"></script>
+    <link rel="stylesheet" crossorigin href="/OSAD-demo/assets/index-CvsinIYR.css">
   </head>
   <body data-page="play">
     <main class="app-shell">
@@ -102,6 +102,16 @@
           </div>
 
           <div id="avatar-stage" class="avatar-stage" aria-label="오디오에 반응하는 임시 아바타">
+            <div class="avatar-asset-stack" aria-hidden="true">
+              <img data-avatar-layer="background" alt="" hidden />
+              <img data-avatar-layer="aura" alt="" hidden />
+              <img data-avatar-layer="body" alt="" hidden />
+              <img data-avatar-layer="mask" alt="" hidden />
+              <img data-avatar-layer="emissive" alt="" hidden />
+              <img data-avatar-layer="permanent" alt="" hidden />
+              <img data-avatar-layer="particles" alt="" hidden />
+              <img data-avatar-layer="foreground" alt="" hidden />
+            </div>
             <div class="avatar-aura aura-outer"></div>
             <div class="avatar-aura aura-inner"></div>
 
@@ -160,6 +170,10 @@
             </div>
             <span id="avatar-evolution-progress">0 / 1 XP</span>
           </div>
+          <div class="avatar-renderer-status">
+            <span>Renderer</span>
+            <strong id="avatar-renderer-status">CSS FALLBACK · AWAITING ASSETS</strong>
+          </div>
           <p class="avatar-note">음악이 재생되는 동안 반응하지만, 확정 전에는 외형에 저장되지 않습니다.</p>
           <div class="trait-legend" aria-label="Music DNA 신체 변화 연결">
             <span>Loudness · 오라</span>
@@ -193,7 +207,8 @@
             <span id="analysis-detail">실시간 반응과 별도로 100ms 간격의 특징값만 수집합니다.</span>
           </div>
           <div class="analysis-actions">
-            <button id="start-analysis" class="primary-button" type="button" disabled>45초 분석 시작</button>
+            <button id="auto-analyze-file" class="primary-button" type="button" hidden disabled>전체 곡에서 45초 자동 선택</button>
+            <button id="start-analysis" class="secondary-button" type="button" disabled>현재 구간 45초 분석</button>
             <button id="cancel-analysis" class="secondary-button" type="button" disabled>취소</button>
           </div>
         </div>
@@ -204,6 +219,15 @@
         <div class="analysis-progress-meta">
           <span id="analysis-time">00:00 / 00:45</span>
           <span id="analysis-frame-count">0 samples</span>
+        </div>
+
+        <div id="segment-selection" class="segment-selection" hidden>
+          <div>
+            <p class="step">AUTO SEGMENT SELECTION · V1</p>
+            <strong>곡 전체에서 선택한 구간</strong>
+          </div>
+          <div id="segment-selection-list" class="segment-selection-list"></div>
+          <p>전체 곡은 5초 단위로 탐색하고, 선택된 구간만 정밀 분석합니다.</p>
         </div>
 
         <div id="song-result" class="song-result" hidden>
@@ -218,6 +242,11 @@
             </div>
           </div>
           <div id="song-dna-result" class="song-dna-result"></div>
+          <div class="style-result-heading">
+            <span>STYLE DNA · EXPERIMENTAL</span>
+            <small>장르·아티스트 차이 검증용이며 아직 진화에는 저장되지 않습니다.</small>
+          </div>
+          <div id="style-dna-result" class="style-dna-result"></div>
           <p class="result-note">이 결과는 실시간 반응값과 분리된 곡 단위 스냅샷이며 아직 Avatar DNA에 저장되지 않습니다.</p>
         </div>
       </section>
@@ -463,6 +492,69 @@
           Avatar Response Lab을 Manual로 전환하면 테스트 imprint를 추가할 수 있습니다.
         </p>
         <p class="evolution-debug-warning">개발자 초기화는 이 브라우저에 저장된 진화 기록을 삭제합니다.</p>
+      </section>
+
+      <section class="panel evolution-catalog-panel lab-only" data-page-section="lab" aria-labelledby="evolution-catalog-heading">
+        <div class="panel-heading">
+          <div>
+            <p class="step">05 · EVOLUTION ATLAS</p>
+            <h2 id="evolution-catalog-heading">모든 진화 단계와 45개 최종 조합</h2>
+          </div>
+          <span id="catalog-form-index" class="evolution-mode-badge">FINAL 1 / 45</span>
+        </div>
+
+        <p class="evolution-debug-intro">
+          완성 이미지 45장을 따로 만든 구조가 아니라, 5개 1차 성향 × 3개 2차 특화 × 3개 최종 마스터리 파츠가 누적되는 조합형 구조입니다.
+          현재 캐릭터와 분기 수는 이미지 에셋 제작 전의 임시 시각 시스템입니다. 단계를 누르거나 전체 연출을 재생해 새 에셋이 들어갈 구조를 확인할 수 있습니다.
+        </p>
+
+        <div class="evolution-count-strip" aria-label="단계별 아바타 조합 수">
+          <article><span>Egg</span><strong>1</strong><small>부화 전</small></article>
+          <article><span>Base</span><strong>1</strong><small>기본 몸체</small></article>
+          <article><span>1차 진화</span><strong>5</strong><small>Affinity</small></article>
+          <article><span>2차 진화</span><strong>15</strong><small>5 × 3</small></article>
+          <article class="is-final"><span>최종 진화</span><strong>45</strong><small>5 × 3 × 3</small></article>
+        </div>
+
+        <div class="evolution-catalog-workspace">
+          <article class="catalog-preview-card">
+            <div class="catalog-sequence-toolbar">
+              <div>
+                <span>TEMPORARY AVATAR SYSTEM</span>
+                <strong>Evolution Reveal Preview</strong>
+              </div>
+              <button id="catalog-play-sequence" class="primary-button" type="button">전체 진화 연출 재생</button>
+            </div>
+            <div class="catalog-avatar-frame">
+              <div id="catalog-avatar" class="avatar-stage evolution-catalog-avatar" aria-label="선택한 진화 경로 미리보기"></div>
+              <div id="catalog-sequence-overlay" class="catalog-sequence-overlay" aria-live="polite">
+                <span id="catalog-sequence-kicker">READY</span>
+                <strong id="catalog-sequence-title">EVOLUTION PATH</strong>
+              </div>
+            </div>
+            <div id="catalog-path" class="catalog-path" aria-label="선택한 진화 경로"></div>
+          </article>
+
+          <article class="catalog-controls">
+            <div>
+              <strong>보여줄 단계</strong>
+              <div id="catalog-stage-options" class="catalog-option-grid catalog-stage-options"></div>
+            </div>
+            <div>
+              <strong>1차 · Affinity 5종</strong>
+              <div id="catalog-affinity-options" class="catalog-option-grid"></div>
+            </div>
+            <div>
+              <strong>2차 · Specialization 3종</strong>
+              <div id="catalog-specialization-options" class="catalog-option-grid"></div>
+            </div>
+            <div>
+              <strong>최종 · Mastery 3종</strong>
+              <div id="catalog-mastery-options" class="catalog-option-grid"></div>
+            </div>
+            <p id="catalog-description" class="catalog-description"></p>
+          </article>
+        </div>
       </section>
 
       <footer>

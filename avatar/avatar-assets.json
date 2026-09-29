@@ -1,0 +1,866 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-09-25T00:00:00Z",
+  "assetSets": [
+    {
+      "id": "egg",
+      "form": {
+        "stage": "egg"
+      },
+      "layers": {
+        "background": "scenes/nest/background.webp",
+        "body": "egg/body.webp"
+      },
+      "scene": {
+        "keyLight": "#C9B6F2",
+        "foil": 0,
+        "groundLine": 0.84,
+        "shadowWidth": 0.14
+      }
+    },
+    {
+      "id": "base",
+      "form": {
+        "stage": "base"
+      },
+      "layers": {
+        "background": "scenes/nest/background.webp",
+        "body": "base/body.webp"
+      },
+      "states": {
+        "neutral": "base/neutral.webp",
+        "listening": "base/listening.webp",
+        "analyzing": "base/analyzing.webp",
+        "happy": "base/happy.webp"
+      },
+      "scene": {
+        "keyLight": "#C9B6F2",
+        "foil": 0,
+        "groundLine": 0.84,
+        "shadowWidth": 0.2
+      }
+    },
+    {
+      "id": "s1.weight",
+      "form": {
+        "stage": "stage1",
+        "lineage": "weight"
+      },
+      "layers": {
+        "background": "scenes/weight.s1/background.webp",
+        "body": "s1.weight/body.webp",
+        "foreground": "scenes/weight.foreground/foreground.webp"
+      },
+      "scene": {
+        "keyLight": "#FFC77A",
+        "foil": 0,
+        "groundLine": 0.84,
+        "shadowWidth": 0.36
+      }
+    },
+    {
+      "id": "s1.motion",
+      "form": {
+        "stage": "stage1",
+        "lineage": "motion"
+      },
+      "layers": {
+        "background": "scenes/motion.s1/background.webp",
+        "body": "s1.motion/body.webp",
+        "foreground": "scenes/motion.foreground/foreground.webp"
+      },
+      "scene": {
+        "keyLight": "#7FE3D6",
+        "foil": 0,
+        "groundLine": 0.84,
+        "shadowWidth": 0.32
+      }
+    },
+    {
+      "id": "s1.light",
+      "form": {
+        "stage": "stage1",
+        "lineage": "light"
+      },
+      "layers": {
+        "background": "scenes/light.s1/background.webp",
+        "body": "s1.light/body.webp",
+        "foreground": "scenes/light.foreground/foreground.webp"
+      },
+      "scene": {
+        "keyLight": "#FFE08A",
+        "foil": 0,
+        "groundLine": 0.84,
+        "shadowWidth": 0.18
+      }
+    },
+    {
+      "id": "s1.rhythm",
+      "form": {
+        "stage": "stage1",
+        "lineage": "rhythm"
+      },
+      "layers": {
+        "body": "s1.rhythm/body.webp"
+      }
+    },
+    {
+      "id": "s2.weight.drive",
+      "form": {
+        "stage": "stage2",
+        "lineage": "weight",
+        "direction": "drive"
+      },
+      "layers": {
+        "background": "scenes/weight.s2.drive/background.webp",
+        "body": "s2.weight.drive/body.webp",
+        "foreground": "scenes/weight.foreground/foreground.webp"
+      },
+      "scene": {
+        "keyLight": "#FFB347",
+        "foil": 0.4,
+        "groundLine": 0.84,
+        "shadowWidth": 0.44
+      }
+    },
+    {
+      "id": "s2.weight.shine",
+      "form": {
+        "stage": "stage2",
+        "lineage": "weight",
+        "direction": "shine"
+      },
+      "layers": {
+        "background": "scenes/weight.s2.shine/background.webp",
+        "body": "s2.weight.shine/body.webp",
+        "foreground": "scenes/weight.foreground/foreground.webp"
+      },
+      "scene": {
+        "keyLight": "#FFCD5C",
+        "foil": 0.4,
+        "groundLine": 0.84,
+        "shadowWidth": 0.38
+      }
+    },
+    {
+      "id": "s2.motion.drive",
+      "form": {
+        "stage": "stage2",
+        "lineage": "motion",
+        "direction": "drive"
+      },
+      "layers": {
+        "background": "scenes/motion.s2.drive/background.webp",
+        "body": "s2.motion.drive/body.webp",
+        "foreground": "scenes/motion.foreground/foreground.webp"
+      },
+      "scene": {
+        "keyLight": "#3FB8E0",
+        "foil": 0.4,
+        "groundLine": 0.84,
+        "shadowWidth": 0.36
+      }
+    },
+    {
+      "id": "s2.motion.shine",
+      "form": {
+        "stage": "stage2",
+        "lineage": "motion",
+        "direction": "shine"
+      },
+      "layers": {
+        "background": "scenes/motion.s2.shine/background.webp",
+        "body": "s2.motion.shine/body.webp",
+        "foreground": "scenes/motion.foreground/foreground.webp"
+      },
+      "scene": {
+        "keyLight": "#6FE3E0",
+        "foil": 0.4,
+        "groundLine": 0.84,
+        "shadowWidth": 0.36
+      }
+    },
+    {
+      "id": "s2.light.drive",
+      "form": {
+        "stage": "stage2",
+        "lineage": "light",
+        "direction": "drive"
+      },
+      "layers": {
+        "background": "scenes/light.s2.drive/background.webp",
+        "body": "s2.light.drive/body.webp",
+        "foreground": "scenes/light.foreground/foreground.webp"
+      },
+      "scene": {
+        "keyLight": "#FFA85C",
+        "foil": 0.4,
+        "groundLine": 0.84,
+        "shadowWidth": 0.18
+      }
+    },
+    {
+      "id": "s2.light.shine",
+      "form": {
+        "stage": "stage2",
+        "lineage": "light",
+        "direction": "shine"
+      },
+      "layers": {
+        "background": "scenes/light.s2.shine/background.webp",
+        "body": "s2.light.shine/body.webp",
+        "foreground": "scenes/light.foreground/foreground.webp"
+      },
+      "scene": {
+        "keyLight": "#FFE8A3",
+        "foil": 0.4,
+        "groundLine": 0.84,
+        "shadowWidth": 0.18
+      }
+    },
+    {
+      "id": "s2.rhythm.drive",
+      "form": {
+        "stage": "stage2",
+        "lineage": "rhythm",
+        "direction": "drive"
+      },
+      "layers": {
+        "body": "s2.rhythm.drive/body.webp"
+      }
+    },
+    {
+      "id": "s2.rhythm.shine",
+      "form": {
+        "stage": "stage2",
+        "lineage": "rhythm",
+        "direction": "shine"
+      },
+      "layers": {
+        "body": "s2.rhythm.shine/body.webp"
+      }
+    },
+    {
+      "id": "final.weight.drive",
+      "form": {
+        "stage": "final",
+        "lineage": "weight",
+        "direction": "drive"
+      },
+      "layers": {
+        "background": "final.weight.drive.echo/background.webp",
+        "body": "final.weight.drive/body.webp",
+        "foreground": "scenes/weight.foreground/foreground.webp"
+      },
+      "scene": {
+        "keyLight": "#FFB347",
+        "foil": 0.8,
+        "groundLine": 0.84,
+        "shadowWidth": 0.46
+      }
+    },
+    {
+      "id": "final.weight.drive.echo",
+      "form": {
+        "stage": "final",
+        "lineage": "weight",
+        "direction": "drive",
+        "mastery": "echo"
+      },
+      "layers": {
+        "background": "final.weight.drive.echo/background.webp",
+        "aura": "final.weight.drive.echo/aura.webp",
+        "body": "final.weight.drive.echo/body.webp",
+        "mask": "final.weight.drive.echo/emissive.webp",
+        "emissive": "final.weight.drive.echo/emissive.webp",
+        "particles": "final.weight.drive.echo/particles.webp",
+        "foreground": "scenes/weight.foreground/foreground.webp"
+      },
+      "reactive": {
+        "loudness": [
+          "aura",
+          "emissive"
+        ],
+        "energy": [
+          "background"
+        ],
+        "bass": [
+          "body"
+        ],
+        "brightness": [
+          "mask"
+        ],
+        "pulse": [
+          "particles"
+        ]
+      },
+      "scene": {
+        "keyLight": "#FFB347",
+        "foil": 0.8,
+        "groundLine": 0.84,
+        "shadowWidth": 0.46,
+        "sigilEffect": "echo"
+      }
+    },
+    {
+      "id": "final.weight.drive.harmony",
+      "form": {
+        "stage": "final",
+        "lineage": "weight",
+        "direction": "drive",
+        "mastery": "harmony"
+      },
+      "layers": {
+        "background": "final.weight.drive.echo/background.webp",
+        "body": "final.weight.drive.harmony/body.webp",
+        "foreground": "scenes/weight.foreground/foreground.webp"
+      },
+      "scene": {
+        "keyLight": "#FFB347",
+        "foil": 0.8,
+        "groundLine": 0.84,
+        "shadowWidth": 0.46,
+        "sigilEffect": "harmony"
+      }
+    },
+    {
+      "id": "final.weight.drive.explorer",
+      "form": {
+        "stage": "final",
+        "lineage": "weight",
+        "direction": "drive",
+        "mastery": "explorer"
+      },
+      "layers": {
+        "background": "final.weight.drive.echo/background.webp",
+        "body": "final.weight.drive.explorer/body.webp",
+        "foreground": "scenes/weight.foreground/foreground.webp"
+      },
+      "scene": {
+        "keyLight": "#FFB347",
+        "foil": 0.8,
+        "groundLine": 0.84,
+        "shadowWidth": 0.4,
+        "sigilEffect": "explorer"
+      }
+    },
+    {
+      "id": "final.weight.shine",
+      "form": {
+        "stage": "final",
+        "lineage": "weight",
+        "direction": "shine"
+      },
+      "layers": {
+        "background": "scenes/weight.final.shine/background.webp",
+        "body": "final.weight.shine/body.webp",
+        "foreground": "scenes/weight.foreground/foreground.webp"
+      },
+      "scene": {
+        "keyLight": "#FFCD5C",
+        "foil": 0.8,
+        "groundLine": 0.84,
+        "shadowWidth": 0.46
+      }
+    },
+    {
+      "id": "final.weight.shine.echo",
+      "form": {
+        "stage": "final",
+        "lineage": "weight",
+        "direction": "shine",
+        "mastery": "echo"
+      },
+      "layers": {
+        "background": "scenes/weight.final.shine/background.webp",
+        "body": "final.weight.shine.echo/body.webp",
+        "foreground": "scenes/weight.foreground/foreground.webp"
+      },
+      "scene": {
+        "keyLight": "#FFCD5C",
+        "foil": 0.8,
+        "groundLine": 0.84,
+        "shadowWidth": 0.46,
+        "sigilEffect": "echo"
+      }
+    },
+    {
+      "id": "final.weight.shine.harmony",
+      "form": {
+        "stage": "final",
+        "lineage": "weight",
+        "direction": "shine",
+        "mastery": "harmony"
+      },
+      "layers": {
+        "background": "scenes/weight.final.shine/background.webp",
+        "body": "final.weight.shine.harmony/body.webp",
+        "foreground": "scenes/weight.foreground/foreground.webp"
+      },
+      "scene": {
+        "keyLight": "#FFCD5C",
+        "foil": 0.8,
+        "groundLine": 0.84,
+        "shadowWidth": 0.46,
+        "sigilEffect": "harmony"
+      }
+    },
+    {
+      "id": "final.weight.shine.explorer",
+      "form": {
+        "stage": "final",
+        "lineage": "weight",
+        "direction": "shine",
+        "mastery": "explorer"
+      },
+      "layers": {
+        "background": "scenes/weight.final.shine/background.webp",
+        "body": "final.weight.shine.explorer/body.webp",
+        "foreground": "scenes/weight.foreground/foreground.webp"
+      },
+      "scene": {
+        "keyLight": "#FFCD5C",
+        "foil": 0.8,
+        "groundLine": 0.84,
+        "shadowWidth": 0.42,
+        "sigilEffect": "explorer"
+      }
+    },
+    {
+      "id": "final.motion.drive",
+      "form": {
+        "stage": "final",
+        "lineage": "motion",
+        "direction": "drive"
+      },
+      "layers": {
+        "background": "scenes/motion.final.drive/background.webp",
+        "body": "final.motion.drive/body.webp",
+        "foreground": "scenes/motion.foreground/foreground.webp"
+      },
+      "scene": {
+        "keyLight": "#4FC3F7",
+        "foil": 0.8,
+        "groundLine": 0.84,
+        "shadowWidth": 0.4
+      }
+    },
+    {
+      "id": "final.motion.drive.echo",
+      "form": {
+        "stage": "final",
+        "lineage": "motion",
+        "direction": "drive",
+        "mastery": "echo"
+      },
+      "layers": {
+        "background": "scenes/motion.final.drive/background.webp",
+        "body": "final.motion.drive.echo/body.webp",
+        "foreground": "scenes/motion.foreground/foreground.webp"
+      },
+      "scene": {
+        "keyLight": "#4FC3F7",
+        "foil": 0.8,
+        "groundLine": 0.84,
+        "shadowWidth": 0.4,
+        "sigilEffect": "echo"
+      }
+    },
+    {
+      "id": "final.motion.drive.harmony",
+      "form": {
+        "stage": "final",
+        "lineage": "motion",
+        "direction": "drive",
+        "mastery": "harmony"
+      },
+      "layers": {
+        "background": "scenes/motion.final.drive/background.webp",
+        "body": "final.motion.drive.harmony/body.webp",
+        "foreground": "scenes/motion.foreground/foreground.webp"
+      },
+      "scene": {
+        "keyLight": "#4FC3F7",
+        "foil": 0.8,
+        "groundLine": 0.84,
+        "shadowWidth": 0.4,
+        "sigilEffect": "harmony"
+      }
+    },
+    {
+      "id": "final.motion.drive.explorer",
+      "form": {
+        "stage": "final",
+        "lineage": "motion",
+        "direction": "drive",
+        "mastery": "explorer"
+      },
+      "layers": {
+        "background": "scenes/motion.final.drive/background.webp",
+        "body": "final.motion.drive.explorer/body.webp",
+        "foreground": "scenes/motion.foreground/foreground.webp"
+      },
+      "scene": {
+        "keyLight": "#4FC3F7",
+        "foil": 0.8,
+        "groundLine": 0.84,
+        "shadowWidth": 0.4,
+        "sigilEffect": "explorer"
+      }
+    },
+    {
+      "id": "final.motion.shine",
+      "form": {
+        "stage": "final",
+        "lineage": "motion",
+        "direction": "shine"
+      },
+      "layers": {
+        "background": "scenes/motion.final.shine/background.webp",
+        "body": "final.motion.shine/body.webp",
+        "foreground": "scenes/motion.foreground/foreground.webp"
+      },
+      "scene": {
+        "keyLight": "#30F0F0",
+        "foil": 0.8,
+        "groundLine": 0.84,
+        "shadowWidth": 0.4
+      }
+    },
+    {
+      "id": "final.motion.shine.echo",
+      "form": {
+        "stage": "final",
+        "lineage": "motion",
+        "direction": "shine",
+        "mastery": "echo"
+      },
+      "layers": {
+        "background": "scenes/motion.final.shine/background.webp",
+        "body": "final.motion.shine.echo/body.webp",
+        "foreground": "scenes/motion.foreground/foreground.webp"
+      },
+      "scene": {
+        "keyLight": "#30F0F0",
+        "foil": 0.8,
+        "groundLine": 0.84,
+        "shadowWidth": 0.4,
+        "sigilEffect": "echo"
+      }
+    },
+    {
+      "id": "final.motion.shine.harmony",
+      "form": {
+        "stage": "final",
+        "lineage": "motion",
+        "direction": "shine",
+        "mastery": "harmony"
+      },
+      "layers": {
+        "background": "scenes/motion.final.shine/background.webp",
+        "body": "final.motion.shine.harmony/body.webp",
+        "foreground": "scenes/motion.foreground/foreground.webp"
+      },
+      "scene": {
+        "keyLight": "#30F0F0",
+        "foil": 0.8,
+        "groundLine": 0.84,
+        "shadowWidth": 0.4,
+        "sigilEffect": "harmony"
+      }
+    },
+    {
+      "id": "final.motion.shine.explorer",
+      "form": {
+        "stage": "final",
+        "lineage": "motion",
+        "direction": "shine",
+        "mastery": "explorer"
+      },
+      "layers": {
+        "background": "scenes/motion.final.shine/background.webp",
+        "body": "final.motion.shine.explorer/body.webp",
+        "foreground": "scenes/motion.foreground/foreground.webp"
+      },
+      "scene": {
+        "keyLight": "#30F0F0",
+        "foil": 0.8,
+        "groundLine": 0.84,
+        "shadowWidth": 0.4,
+        "sigilEffect": "explorer"
+      }
+    },
+    {
+      "id": "final.light.drive",
+      "form": {
+        "stage": "final",
+        "lineage": "light",
+        "direction": "drive"
+      },
+      "layers": {
+        "background": "scenes/light.final.drive/background.webp",
+        "body": "final.light.drive/body.webp",
+        "foreground": "scenes/light.foreground/foreground.webp"
+      },
+      "scene": {
+        "keyLight": "#E8B84A",
+        "foil": 0.8,
+        "groundLine": 0.84,
+        "shadowWidth": 0.2
+      }
+    },
+    {
+      "id": "final.light.drive.echo",
+      "form": {
+        "stage": "final",
+        "lineage": "light",
+        "direction": "drive",
+        "mastery": "echo"
+      },
+      "layers": {
+        "background": "scenes/light.final.drive/background.webp",
+        "body": "final.light.drive.echo/body.webp",
+        "foreground": "scenes/light.foreground/foreground.webp"
+      },
+      "scene": {
+        "keyLight": "#E8B84A",
+        "foil": 0.8,
+        "groundLine": 0.84,
+        "shadowWidth": 0.2,
+        "sigilEffect": "echo"
+      }
+    },
+    {
+      "id": "final.light.drive.harmony",
+      "form": {
+        "stage": "final",
+        "lineage": "light",
+        "direction": "drive",
+        "mastery": "harmony"
+      },
+      "layers": {
+        "background": "scenes/light.final.drive/background.webp",
+        "body": "final.light.drive.harmony/body.webp",
+        "foreground": "scenes/light.foreground/foreground.webp"
+      },
+      "scene": {
+        "keyLight": "#E8B84A",
+        "foil": 0.8,
+        "groundLine": 0.84,
+        "shadowWidth": 0.2,
+        "sigilEffect": "harmony"
+      }
+    },
+    {
+      "id": "final.light.drive.explorer",
+      "form": {
+        "stage": "final",
+        "lineage": "light",
+        "direction": "drive",
+        "mastery": "explorer"
+      },
+      "layers": {
+        "background": "scenes/light.final.drive/background.webp",
+        "body": "final.light.drive.explorer/body.webp",
+        "foreground": "scenes/light.foreground/foreground.webp"
+      },
+      "scene": {
+        "keyLight": "#E8B84A",
+        "foil": 0.8,
+        "groundLine": 0.84,
+        "shadowWidth": 0.2,
+        "sigilEffect": "explorer",
+        "bodyFrames": [
+          "final.light.drive.explorer/frames/00.webp",
+          "final.light.drive.explorer/frames/01.webp",
+          "final.light.drive.explorer/frames/02.webp",
+          "final.light.drive.explorer/frames/03.webp",
+          "final.light.drive.explorer/frames/04.webp",
+          "final.light.drive.explorer/frames/05.webp",
+          "final.light.drive.explorer/frames/06.webp",
+          "final.light.drive.explorer/frames/07.webp",
+          "final.light.drive.explorer/frames/08.webp",
+          "final.light.drive.explorer/frames/09.webp",
+          "final.light.drive.explorer/frames/10.webp",
+          "final.light.drive.explorer/frames/11.webp"
+        ]
+      }
+    },
+    {
+      "id": "final.light.shine",
+      "form": {
+        "stage": "final",
+        "lineage": "light",
+        "direction": "shine"
+      },
+      "layers": {
+        "background": "scenes/light.final.shine/background.webp",
+        "body": "final.light.shine/body.webp",
+        "foreground": "scenes/light.foreground/foreground.webp"
+      },
+      "scene": {
+        "keyLight": "#FFD65C",
+        "foil": 0.8,
+        "groundLine": 0.84,
+        "shadowWidth": 0.2
+      }
+    },
+    {
+      "id": "final.light.shine.echo",
+      "form": {
+        "stage": "final",
+        "lineage": "light",
+        "direction": "shine",
+        "mastery": "echo"
+      },
+      "layers": {
+        "background": "scenes/light.final.shine/background.webp",
+        "body": "final.light.shine.echo/body.webp",
+        "foreground": "scenes/light.foreground/foreground.webp"
+      },
+      "scene": {
+        "keyLight": "#FFD65C",
+        "foil": 0.8,
+        "groundLine": 0.84,
+        "shadowWidth": 0.2,
+        "sigilEffect": "echo"
+      }
+    },
+    {
+      "id": "final.light.shine.harmony",
+      "form": {
+        "stage": "final",
+        "lineage": "light",
+        "direction": "shine",
+        "mastery": "harmony"
+      },
+      "layers": {
+        "background": "scenes/light.final.shine/background.webp",
+        "body": "final.light.shine.harmony/body.webp",
+        "foreground": "scenes/light.foreground/foreground.webp"
+      },
+      "scene": {
+        "keyLight": "#FFD65C",
+        "foil": 0.8,
+        "groundLine": 0.84,
+        "shadowWidth": 0.2,
+        "sigilEffect": "harmony"
+      }
+    },
+    {
+      "id": "final.light.shine.explorer",
+      "form": {
+        "stage": "final",
+        "lineage": "light",
+        "direction": "shine",
+        "mastery": "explorer"
+      },
+      "layers": {
+        "background": "scenes/light.final.shine/background.webp",
+        "body": "final.light.shine.explorer/body.webp",
+        "foreground": "scenes/light.foreground/foreground.webp"
+      },
+      "scene": {
+        "keyLight": "#FFD65C",
+        "foil": 0.8,
+        "groundLine": 0.84,
+        "shadowWidth": 0.2,
+        "sigilEffect": "explorer"
+      }
+    },
+    {
+      "id": "final.rhythm.drive",
+      "form": {
+        "stage": "final",
+        "lineage": "rhythm",
+        "direction": "drive"
+      },
+      "layers": {
+        "body": "final.rhythm.drive/body.webp"
+      }
+    },
+    {
+      "id": "final.rhythm.drive.echo",
+      "form": {
+        "stage": "final",
+        "lineage": "rhythm",
+        "direction": "drive",
+        "mastery": "echo"
+      },
+      "layers": {
+        "body": "final.rhythm.drive.echo/body.webp"
+      }
+    },
+    {
+      "id": "final.rhythm.drive.harmony",
+      "form": {
+        "stage": "final",
+        "lineage": "rhythm",
+        "direction": "drive",
+        "mastery": "harmony"
+      },
+      "layers": {
+        "body": "final.rhythm.drive.harmony/body.webp"
+      }
+    },
+    {
+      "id": "final.rhythm.drive.explorer",
+      "form": {
+        "stage": "final",
+        "lineage": "rhythm",
+        "direction": "drive",
+        "mastery": "explorer"
+      },
+      "layers": {
+        "body": "final.rhythm.drive.explorer/body.webp"
+      }
+    },
+    {
+      "id": "final.rhythm.shine",
+      "form": {
+        "stage": "final",
+        "lineage": "rhythm",
+        "direction": "shine"
+      },
+      "layers": {
+        "body": "final.rhythm.shine/body.webp"
+      }
+    },
+    {
+      "id": "final.rhythm.shine.echo",
+      "form": {
+        "stage": "final",
+        "lineage": "rhythm",
+        "direction": "shine",
+        "mastery": "echo"
+      },
+      "layers": {
+        "body": "final.rhythm.shine.echo/body.webp"
+      }
+    },
+    {
+      "id": "final.rhythm.shine.harmony",
+      "form": {
+        "stage": "final",
+        "lineage": "rhythm",
+        "direction": "shine",
+        "mastery": "harmony"
+      },
+      "layers": {
+        "body": "final.rhythm.shine.harmony/body.webp"
+      }
+    },
+    {
+      "id": "final.rhythm.shine.explorer",
+      "form": {
+        "stage": "final",
+        "lineage": "rhythm",
+        "direction": "shine",
+        "mastery": "explorer"
+      },
+      "layers": {
+        "body": "final.rhythm.shine.explorer/body.webp"
+      }
+    }
+  ]
+}
